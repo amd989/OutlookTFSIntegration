@@ -1,0 +1,38 @@
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.dll
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.pdb
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.dll.manifest
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.vsto
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.csprojResolveAssemblyReference.cache
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.Properties.Resources.resources
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.csproj.GenerateResource.Cache
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.dll
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.pdb
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.TeamFoundation.Client.dll
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.TeamFoundation.Common.dll
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\Microsoft.TeamFoundation.Common.xml
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.Dialog.resources
+c:\users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.dll.config
+C:\Users\alejandro.mora\documents\visual studio 2012\Projects\TFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.ReadMessage.resources
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.csprojResolveAssemblyReference.cache
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.Dialog.resources
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.Properties.Resources.resources
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.ReadMessage.resources
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.csproj.GenerateResource.Cache
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.dll
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\obj\Debug\TFSIntegration.pdb
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.dll.config
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.dll
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.pdb
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.dll.manifest
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\TFSIntegration.vsto
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.TeamFoundation.Client.dll
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.TeamFoundation.Common.dll
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.TeamFoundation.Common.xml
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+D:\Alejandro\Dropbox\Projects\GitHub\OutlookTFSIntegration\TFSIntegration\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
