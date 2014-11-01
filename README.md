@@ -21,8 +21,8 @@ Change Log
 Usage
 -----
 
-# Install it to Outlook.
-# Open message you want to attach to task.
-# Click "Attach to TFS" button
-# Select your TFS server.
-# Put task number.
+* Install it to Outlook.
+* Open message you want to attach to task.
+* Click "Attach to TFS" button, select your TFS server in screen shown.
+* Input task number and click + button.
+* Click Save.
