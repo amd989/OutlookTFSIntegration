@@ -8,10 +8,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace TFSIntegration.Classes
 {
+    using System;
     using System.IO;
     using System.Xml;
     using System.Xml.Serialization;
 
+    using Microsoft.TeamFoundation.Client;
     using Microsoft.TeamFoundation.Server;
 
     /// <summary>The setting storage.</summary>

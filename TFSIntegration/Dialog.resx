@@ -123,10 +123,21 @@
   <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="backgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="deleteSelectedButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsRAAALEQF/ZF+RAAAA4klEQVQ4T4WSOw7CMBBE0yDE
+        ARANHAhEBQ0dn4K7UcABOAYdErRcgu8bKxs5ztqM9ArHnsnGmapWDw6wCqu8+nCERVjVkvkEX3jDFjwN
+        4Aw694QmRG/WQ0MhG4gVmw2FTCGMLVO8qfUaJM8srjCCII39gfiAQvbgme8wgZYUkk7icYOO2aRvL4XI
+        PIaiNLZnfsBfc+7ChO5oB1mVzEY2JGfW2Onf6YSonp7ZLkyHvRDrSeh2vCnS2/ZCXjCH0GnV0jbckqA0
+        5AJDCFqCQlTPbEmQxtabW2bTDJpuF6Sxa3NV/QC0uIHBkyuwBAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="FetchBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>140, 17</value>
   </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>297, 17</value>
+  <metadata name="SaveBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>394, 17</value>
   </metadata>
 </root>

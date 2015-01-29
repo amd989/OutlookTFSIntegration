@@ -30,7 +30,7 @@ namespace TFSIntegration.Classes
 
         /// <summary>Initializes a new instance of the <see cref="Storage"/> class.
         ///     Initializes a new instance of the <see cref="T:System.Object"/> class.</summary>
-        /// <param name="context"></param>
+        /// <param name="context">The context</param>
         public Storage(Inspector context)
         {
             this.context = context;

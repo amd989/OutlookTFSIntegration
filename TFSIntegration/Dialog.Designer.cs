@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dialog));
             this.taskTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
@@ -38,10 +39,11 @@
             this.TaskId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.FetchBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.loaderIcon = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.deleteSelectedButton = new System.Windows.Forms.Button();
+            this.SaveBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +54,7 @@
             this.taskTextBox.CausesValidation = false;
             this.taskTextBox.Location = new System.Drawing.Point(53, 15);
             this.taskTextBox.Name = "taskTextBox";
-            this.taskTextBox.Size = new System.Drawing.Size(218, 20);
+            this.taskTextBox.Size = new System.Drawing.Size(211, 20);
             this.taskTextBox.TabIndex = 0;
             this.taskTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.taskTextBox_Validating);
             // 
@@ -72,7 +74,7 @@
             this.addButton.Image = global::TFSIntegration.Properties.Resources.plus;
             this.addButton.Location = new System.Drawing.Point(305, 12);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(25, 24);
+            this.addButton.Size = new System.Drawing.Size(24, 24);
             this.addButton.TabIndex = 1;
             this.toolTip1.SetToolTip(this.addButton, "Add Task");
             this.addButton.UseVisualStyleBackColor = true;
@@ -80,9 +82,9 @@
             // 
             // acceptButton
             // 
-            this.acceptButton.Location = new System.Drawing.Point(309, 166);
+            this.acceptButton.Location = new System.Drawing.Point(306, 166);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(55, 23);
+            this.acceptButton.Size = new System.Drawing.Size(58, 23);
             this.acceptButton.TabIndex = 5;
             this.acceptButton.Text = "Save";
             this.acceptButton.UseVisualStyleBackColor = true;
@@ -92,9 +94,9 @@
             // 
             this.cancelButton.CausesValidation = false;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(228, 166);
+            this.cancelButton.Location = new System.Drawing.Point(12, 168);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(58, 23);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -116,7 +118,7 @@
             // 
             // TaskId
             // 
-            this.TaskId.Text = "TaskId";
+            this.TaskId.Text = "#";
             this.TaskId.Width = 56;
             // 
             // Title
@@ -128,9 +130,10 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // backgroundWorker
+            // FetchBackgroundWorker
             // 
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.FetchBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.FetchBackgroundWorker_DoWork);
+            this.FetchBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.FetchBackgroundWorker_RunWorkerCompleted);
             // 
             // loaderIcon
             // 
@@ -146,14 +149,19 @@
             // 
             this.deleteSelectedButton.FlatAppearance.BorderSize = 0;
             this.deleteSelectedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteSelectedButton.Image = global::TFSIntegration.Properties.Resources.x;
+            this.deleteSelectedButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteSelectedButton.Image")));
             this.deleteSelectedButton.Location = new System.Drawing.Point(336, 13);
             this.deleteSelectedButton.Name = "deleteSelectedButton";
-            this.deleteSelectedButton.Size = new System.Drawing.Size(28, 23);
+            this.deleteSelectedButton.Size = new System.Drawing.Size(24, 24);
             this.deleteSelectedButton.TabIndex = 7;
             this.toolTip1.SetToolTip(this.deleteSelectedButton, "Delete Selected");
             this.deleteSelectedButton.UseVisualStyleBackColor = true;
             this.deleteSelectedButton.Click += new System.EventHandler(this.deleteSelectedButton_Click);
+            // 
+            // SaveBackgroundWorker
+            // 
+            this.SaveBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SaveBackgroundWorker_DoWork);
+            this.SaveBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SaveBackgroundWorkerOnRunWorkerCompleted);
             // 
             // Dialog
             // 
@@ -176,7 +184,7 @@
             this.Name = "Dialog";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Tasks";
+            this.Text = "Attach Emails to Tasks";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).EndInit();
             this.ResumeLayout(false);
@@ -195,9 +203,10 @@
         private System.Windows.Forms.ColumnHeader TaskId;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.ComponentModel.BackgroundWorker FetchBackgroundWorker;
         private System.Windows.Forms.PictureBox loaderIcon;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button deleteSelectedButton;
+        private System.ComponentModel.BackgroundWorker SaveBackgroundWorker;
     }
 }

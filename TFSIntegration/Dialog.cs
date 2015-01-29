@@ -2,9 +2,10 @@
 // <copyright file="Dialog.cs" company="">
 //   
 // </copyright>
-// <summary>
-//   Defines the Dialog type.
+//  <summary>
+//   Dialog.cs
 // </summary>
+// <author>alejandro.mora\Alejandro Mora</author>
 // --------------------------------------------------------------------------------------------------------------------
 namespace TFSIntegration
 {
@@ -55,6 +56,58 @@ namespace TFSIntegration
 
         #region Methods
 
+        /// <summary>The fetch background worker_ do work.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
+        private void FetchBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var taskNumber = e.Argument is int ? (int)e.Argument : 0;
+            var task = this.GetTasks(taskNumber);
+            e.Result = task;
+        }
+
+        /// <summary>The fetch background worker_ run worker completed.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
+        private void FetchBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var task = e.Result as Task;
+            if (task != null)
+            {
+                var listItem = new ListViewItem(task.TaskId.ToString(CultureInfo.InvariantCulture));
+                listItem.SubItems.Add(task.Title);
+                this.taskListView.Items.Add(listItem);
+                this.taskTextBox.Text = string.Empty;
+                this.errorProvider.SetError(this.taskTextBox, string.Empty);
+                this.loaderIcon.Visible = false;
+            }
+            else
+            {
+                this.loaderIcon.Visible = false;
+                MessageBox.Show(
+                    Resources.Dialog_addButton_Click_Invalid_Task_number, 
+                    Resources.Dialog_addButton_Click_Error, 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Warning);
+                this.taskTextBox.SelectAll();
+            }
+        }
+
+        /// <summary>The fetch task.</summary>
+        private void FetchTask()
+        {
+            var taskId = this.taskTextBox.Text;
+            if (!string.IsNullOrEmpty(taskId))
+            {
+                var taskNumber = Convert.ToInt32(taskId);
+                if (!this.FetchBackgroundWorker.IsBusy)
+                {
+                    this.FetchBackgroundWorker.RunWorkerAsync(taskNumber);
+                    this.loaderIcon.Visible = true;
+                }
+            }
+        }
+
         /// <summary>The get tasks.</summary>
         /// <param name="taskId">The task id.</param>
         /// <returns>The <see cref="Task"/>.</returns>
@@ -69,6 +122,62 @@ namespace TFSIntegration
             catch (Exception)
             {
                 return null;
+            }
+        }
+
+        /// <summary>The save background worker on run worker completed.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="runWorkerCompletedEventArgs">The run worker completed event args.</param>
+        private void SaveBackgroundWorkerOnRunWorkerCompleted(
+            object sender, 
+            RunWorkerCompletedEventArgs runWorkerCompletedEventArgs)
+        {
+            var result = runWorkerCompletedEventArgs.Result is bool && (bool)runWorkerCompletedEventArgs.Result;
+            this.loaderIcon.Visible = false;
+            if (result)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                var error = runWorkerCompletedEventArgs.Error;
+                var dialogResult = MessageBox.Show(
+                    error.Message, 
+                    Resources.Dialog_SaveBackgroundWorkerOnRunWorkerCompleted_Title_An_error_has_ocurred, 
+                    MessageBoxButtons.AbortRetryIgnore, 
+                    MessageBoxIcon.Error);
+
+                if (dialogResult == DialogResult.Retry)
+                {
+                    this.SaveTasks();
+                }
+            }
+        }
+
+        /// <summary>The save background worker_ do work.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
+        private void SaveBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var itemCollection = e.Argument as List<ListViewItem>;
+            var workItemStore = this.teamExplorerDialog.Tfs.GetService<WorkItemStore>();
+            if (itemCollection != null && itemCollection.Count > 0)
+            {
+                foreach (var path in this.mailItems.Select(this.SaveEmail))
+                {
+                    foreach (var workItem in
+                        from ListViewItem task in itemCollection
+                        select workItemStore.GetWorkItem(Convert.ToInt32(task.Text)))
+                    {
+                        workItem.Attachments.Add(new Attachment(path, "Attached email"));
+                        workItem.Save();
+                    }
+
+                    File.Delete(path);
+                }
+
+                e.Result = true;
             }
         }
 
@@ -87,36 +196,22 @@ namespace TFSIntegration
             validName = invalidChars.Aggregate(
                 validName, 
                 (current, c) => current.Replace(c.ToString(CultureInfo.InvariantCulture), string.Empty));
-            string path = string.Format(CultureInfo.InvariantCulture, "{0}.msg", validName);
+            var path = string.Format(CultureInfo.InvariantCulture, "{0}.msg", validName);
             mailItem.SaveAs(path);
             return path;
         }
 
-        /// <summary>The accept button_ click.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The event.</param>
-        private void acceptButton_Click(object sender, EventArgs e)
+        /// <summary>The save tasks.</summary>
+        private void SaveTasks()
         {
-            var workItemStore = this.teamExplorerDialog.Tfs.GetService<WorkItemStore>();
-            var itemCollection = this.taskListView.Items;
-
+            var itemCollection = this.taskListView.Items.Cast<ListViewItem>().ToList();
             if (itemCollection.Count > 0)
             {
-                foreach (var mailItem in this.mailItems)
+                if (!this.SaveBackgroundWorker.IsBusy)
                 {
-                    string path = this.SaveEmail(mailItem);
-                    foreach (var workItem in
-                        from ListViewItem task in itemCollection
-                        select workItemStore.GetWorkItem(Convert.ToInt32(task.Text)))
-                    {
-                        workItem.Attachments.Add(new Attachment(path, "Attached email"));
-                        workItem.Save();
-                        File.Delete(path);
-                    }
+                    this.SaveBackgroundWorker.RunWorkerAsync(itemCollection);
+                    this.loaderIcon.Visible = true;
                 }
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
             else
             {
@@ -130,41 +225,20 @@ namespace TFSIntegration
             }
         }
 
+        /// <summary>The accept button_ click.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event.</param>
+        private void acceptButton_Click(object sender, EventArgs e)
+        {
+            this.SaveTasks();
+        }
+
         /// <summary>The add button_ click.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event.</param>
         private void addButton_Click(object sender, EventArgs e)
         {
-            string taskId = this.taskTextBox.Text;
-            if (!string.IsNullOrEmpty(taskId))
-            {
-                int taskNumber = Convert.ToInt32(taskId);
-                var task = this.GetTasks(taskNumber);
-                if (task != null)
-                {
-                    var listItem = new ListViewItem(task.TaskId.ToString(CultureInfo.InvariantCulture));
-                    listItem.SubItems.Add(task.Title);
-                    this.taskListView.Items.Add(listItem);
-                    this.taskTextBox.Text = string.Empty;
-                    this.errorProvider.SetError(this.taskTextBox, string.Empty);
-                }
-                else
-                {
-                    MessageBox.Show(
-                        Resources.Dialog_addButton_Click_Invalid_Task_number, 
-                        Resources.Dialog_addButton_Click_Error, 
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Warning);
-                    this.taskTextBox.SelectAll();
-                }
-            }
-        }
-
-        /// <summary>The background worker_ do work.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The e.</param>
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
+            this.FetchTask();
         }
 
         /// <summary>The cancel button_ click.</summary>
@@ -180,7 +254,7 @@ namespace TFSIntegration
         /// <param name="e">The event.</param>
         private void deleteSelectedButton_Click(object sender, EventArgs e)
         {
-            ListView.ListViewItemCollection itemCollection = this.taskListView.Items;
+            var itemCollection = this.taskListView.Items;
             foreach (ListViewItem item in itemCollection.Cast<ListViewItem>().Where(item => item.Checked))
             {
                 item.Remove();
@@ -228,6 +302,5 @@ namespace TFSIntegration
         }
 
         #endregion
-
     }
 }
