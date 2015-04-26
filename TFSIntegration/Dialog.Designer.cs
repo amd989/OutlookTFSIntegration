@@ -52,9 +52,9 @@
             // 
             this.taskTextBox.AcceptsReturn = true;
             this.taskTextBox.CausesValidation = false;
-            this.taskTextBox.Location = new System.Drawing.Point(53, 15);
+            this.taskTextBox.Location = new System.Drawing.Point(78, 15);
             this.taskTextBox.Name = "taskTextBox";
-            this.taskTextBox.Size = new System.Drawing.Size(211, 20);
+            this.taskTextBox.Size = new System.Drawing.Size(186, 20);
             this.taskTextBox.TabIndex = 0;
             this.taskTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.taskTextBox_Validating);
             // 
@@ -63,9 +63,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Task:";
+            this.label1.Text = "Work Item:";
             // 
             // addButton
             // 
@@ -184,7 +184,7 @@
             this.Name = "Dialog";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Attach Emails to Tasks";
+            this.Text = "Attach Emails to Work Items";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loaderIcon)).EndInit();
             this.ResumeLayout(false);

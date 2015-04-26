@@ -46,14 +46,14 @@
     <PublishUrl>ftp://ftp.shift-me.com/public_html/alejandro.md/publish/TFSIntegration/</PublishUrl>
     <InstallUrl>http://alejandro.md/publish/TFSIntegration/</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.9</ApplicationVersion>
+    <ApplicationVersion>1.0.0.10</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>Outlook TFS Integration</ProductName>
-    <PublisherName>Alejandro</PublisherName>
-    <SupportUrl>https://github.com/amd989/OutlookTFSIntegration</SupportUrl>
+    <PublisherName>Alejandro Mora</PublisherName>
+    <SupportUrl>https://github.com/amd989/OutlookTFSIntegration/issues</SupportUrl>
     <FriendlyName>Outlook TFS Integration</FriendlyName>
     <OfficeApplicationDescription>Allows the user to attach emails to tasks on TFS</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>

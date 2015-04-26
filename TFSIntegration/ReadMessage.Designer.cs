@@ -60,7 +60,7 @@
             // openDialogButton
             // 
             this.openDialogButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.openDialogButton.Label = "Attach email to task";
+            this.openDialogButton.Label = "Attach email to work item";
             this.openDialogButton.Name = "openDialogButton";
             this.openDialogButton.OfficeImageId = "AttachItemCombo";
             this.openDialogButton.ScreenTip = "Attach the currently selected emails to a task in TFS";
