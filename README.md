@@ -15,7 +15,7 @@ Downloads
 Known Issues
 ------------
 
-It seems that the combination of either Windows 8 and Outlook 2013 or Outlook 2013 itself is causing the application not to install due that the certificate im using is temporal and not a CA validated cert.
+It seems that the combination of either Windows 8 and Outlook 2013 or Outlook 2013 itself is causing the addin not to install due that the certificate I'm using is a development certificate and not a CA validated cert.
 
 I will update with a new version that includes a valid cert so that installations in those systems would succeed.
 
