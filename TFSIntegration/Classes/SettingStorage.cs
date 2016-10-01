@@ -13,8 +13,7 @@ namespace TFSIntegration.Classes
     using System.Xml;
     using System.Xml.Serialization;
 
-    using Microsoft.TeamFoundation.Client;
-    using Microsoft.TeamFoundation.Server;
+    using Microsoft.TeamFoundation.Core.WebApi;
 
     /// <summary>The setting storage.</summary>
     public class SettingStorage

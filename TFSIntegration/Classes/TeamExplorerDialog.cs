@@ -8,12 +8,11 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace TFSIntegration.Classes
 {
+    using Microsoft.TeamFoundation.Client;
+    using Microsoft.TeamFoundation.Core.WebApi;
     using System;
     using System.Linq;
     using System.Windows.Forms;
-
-    using Microsoft.TeamFoundation.Client;
-    using Microsoft.TeamFoundation.Server;
 
     /// <summary>The team explorer dialog.</summary>
     public class TeamExplorerDialog

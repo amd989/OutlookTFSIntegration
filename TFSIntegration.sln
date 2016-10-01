@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSIntegration", "TFSIntegration\TFSIntegration.csproj", "{F84DF25A-C784-43C1-B073-8D09D083A29E}"
 EndProject
@@ -10,6 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7C74AC
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "native", "native", "{6A205EED-F6CC-4E19-8A47-DBE76C1AB7B9}"
+	ProjectSection(SolutionItems) = preProject
+		packages\Microsoft.TeamFoundationServer.ExtendedClient.14.102.0\lib\native\x86\Microsoft.WITDataStore32.dll = packages\Microsoft.TeamFoundationServer.ExtendedClient.14.102.0\lib\native\x86\Microsoft.WITDataStore32.dll
+		packages\Microsoft.TeamFoundationServer.ExtendedClient.14.102.0\lib\native\amd64\Microsoft.WITDataStore64.dll = packages\Microsoft.TeamFoundationServer.ExtendedClient.14.102.0\lib\native\amd64\Microsoft.WITDataStore64.dll
 	EndProjectSection
 EndProject
 Global
